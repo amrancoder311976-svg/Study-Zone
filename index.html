@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090d25">
+<title>Studyzone | Learn. Grow. Achieve.</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root{
+  --bg:#080c20;
+  --panel:#111833;
+  --panel2:#171f40;
+  --purple:#8b5cf6;
+  --blue:#4285ff;
+  --cyan:#39d8ff;
+  --text:#f5f6ff;
+  --muted:#a5aecb;
+  --border:rgba(255,255,255,.09);
+  --gradient:linear-gradient(120deg,#477bff,#9b5cff,#e05bdb);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:Inter,Arial,sans-serif;line-height:1.6;
+  overflow-x:hidden;
+}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+a{text-decoration:none;color:inherit}
+.container{width:min(1150px,92%);margin:auto}
+.gradient-text{
+  background:var(--gradient);-webkit-background-clip:text;
+  color:transparent;background-clip:text
+}
+.section{padding:90px 0}
+.section-title{text-align:center;margin-bottom:42px}
+.section-title h2{font-size:clamp(28px,4vw,42px);font-weight:900}
+.section-title p{color:var(--muted);margin-top:9px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  padding:13px 22px;border:0;border-radius:12px;
+  color:white;background:var(--gradient);font-weight:700;
+  transition:.3s;box-shadow:0 8px 25px #7c4dff25
+}
+.btn:hover{transform:translateY(-4px);box-shadow:0 12px 30px #7c4dff50}
+.btn-outline{background:transparent;border:1px solid var(--border)}
+.btn-outline:hover{background:#ffffff12}
+.card{
+  background:linear-gradient(145deg,#141d3b,#10162d);
+  border:1px solid var(--border);border-radius:20px;
+  padding:24px;transition:.3s
+}
+.card:hover{transform:translateY(-6px);border-color:#8b5cf680;box-shadow:0 15px 35px #0004}
+.muted{color:var(--muted)}
+header{
+  position:fixed;top:0;left:0;width:100%;z-index:1000;
+  background:#080c20dc;backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border)
+}
+.navbar{height:76px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:25px;font-weight:900;letter-spacing:-1px}
+.logo i{color:#a78bfa;margin-right:6px}
+.nav-links{display:flex;gap:22px;align-items:center}
+.nav-links a{font-size:13px;color:#c5cbe0;font-weight:600;transition:.2s}
+.nav-links a:hover{color:#a78bfa}
+.menu-btn{display:none;background:none;border:0;color:white;font-size:24px}
+.hero{
+  min-height:750px;display:flex;align-items:center;padding:140px 0 80px;
+  position:relative;overflow:hidden
+}
+.hero:before,.hero:after{
+  content:"";position:absolute;border-radius:50%;filter:blur(100px);
+  opacity:.22;pointer-events:none
+}
+.hero:before{width:350px;height:350px;background:#6445ff;top:80px;left:-100px}
+.hero:after{width:400px;height:400px;background:#168dff;right:-150px;bottom:0}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:50px;position:relative;z-index:1}
+.tag{
+  display:inline-block;padding:8px 14px;border-radius:30px;
+  background:#8b5cf622;border:1px solid #8b5cf655;
+  color:#c4b5fd;font-size:12px;font-weight:700;margin-bottom:20px
+}
+.hero h1{font-size:clamp(42px,6vw,68px);line-height:1.12;font-weight:900;letter-spacing:-2px}
+.hero-copy{color:var(--muted);margin:22px 0 28px;max-width:550px}
+.hero-buttons{display:flex;gap:13px;flex-wrap:wrap}
+.hero-art{position:relative;display:flex;justify-content:center;align-items:center;min-height:380px}
+.orbit{
+  width:310px;height:310px;border-radius:50%;
+  border:1px solid #a78bfa55;display:grid;place-items:center;
+  box-shadow:0 0 80px #754cff25;animation:float 5s ease-in-out infinite
+}
+.orbit-inner{
+  width:230px;height:230px;border-radius:50%;background:var(--gradient);
+  display:grid;place-items:center;font-size:85px;
+  box-shadow:0 0 70px #8b5cf655
+}
+.float-card{
+  position:absolute;background:#172044;border:1px solid var(--border);
+  padding:14px 18px;border-radius:14px;box-shadow:0 12px 35px #0005;
+  font-size:13px;animation:float 4s ease-in-out infinite
+}
+.float-one{top:35px;right:0}
+.float-two{bottom:35px;left:0;animation-delay:1s}
+@keyframes float{50%{transform:translateY(-13px)}}
+.stats{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:15px;
+  margin-top:65px
+}
+.stat{text-align:center;padding:20px;background:#ffffff08;border:1px solid var(--border);border-radius:15px}
+.stat h3{font-size:27px;color:#b49aff}
+.stat p{font-size:12px;color:var(--muted)}
+.search-box{
+  max-width:600px;margin:0 auto 35px;display:flex;gap:10px;
+  background:var(--panel);border:1px solid var(--border);
+  border-radius:14px;padding:8px 15px
+}
+.search-box input{background:transparent;border:0;outline:0;color:white;width:100%;padding:8px}
+.subject-grid,.material-grid,.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.subject-icon{
+  width:52px;height:52px;border-radius:15px;display:grid;place-items:center;
+  font-size:22px;margin-bottom:17px;background:#8b5cf622;color:#b9a3ff
+}
+.subject-card h3,.card h3{margin-bottom:8px}
+.subject-card p{color:var(--muted);font-size:13px}
+.subject-card .btn{margin-top:17px;padding:9px 15px;font-size:12px}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:45px;align-items:center}
+.about-visual{
+  min-height:310px;border-radius:25px;background:var(--gradient);
+  display:grid;place-items:center;font-size:110px
+}
+.about-list{list-style:none;margin-top:22px}
+.about-list li{margin:13px 0;color:#c5cbe0}
+.about-list i{color:#9d80ff;margin-right:10px}
+.material-card{display:flex;gap:15px;align-items:flex-start}
+.material-card .subject-icon{flex-shrink:0}
+.material-card p{font-size:13px;color:var(--muted)}
+.quiz-box{max-width:700px;margin:auto}
+.quiz-option{
+  display:block;width:100%;text-align:left;margin:10px 0;
+  padding:14px 16px;border-radius:12px;background:#ffffff08;
+  border:1px solid var(--border);color:white;transition:.2s
+}
+.quiz-option:hover{border-color:#9b7aff;background:#8b5cf622}
+.quiz-option.correct{border-color:#27c58b;background:#27c58b20}
+.quiz-option.wrong{border-color:#ff6464;background:#ff646420}
+.quiz-info{display:flex;justify-content:space-between;color:var(--muted);font-size:13px;margin-bottom:15px}
+.quiz-result{text-align:center;padding:20px}
+.tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.timer-display{font-size:58px;font-weight:900;text-align:center;margin:20px 0;color:#c4b5fd}
+.timer-controls{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+input,textarea,select{
+  width:100%;padding:13px 14px;background:#080f28;color:white;
+  border:1px solid var(--border);border-radius:10px;outline:none
+}
+textarea{resize:vertical;min-height:120px}
+input:focus,textarea:focus,select:focus{border-color:#9874ff}
+.form-group{margin-bottom:13px}
+.form-group label{display:block;margin-bottom:7px;font-size:13px;color:#c7cce0}
+.note-item{
+  background:#ffffff08;border:1px solid var(--border);border-radius:12px;
+  padding:13px;margin-top:10px;display:flex;justify-content:space-between;gap:10px
+}
+.note-item button{background:none;border:0;color:#ff8585}
+.challenge{text-align:center;background:linear-gradient(120deg,#34216b,#172a58)}
+.challenge .big-icon{font-size:45px;margin-bottom:10px}
+.challenge h3{font-size:23px}
+.quote{text-align:center;max-width:750px;margin:auto;font-size:23px;font-weight:700}
+.quote small{display:block;color:var(--muted);font-size:13px;margin-top:14px}
+.founder-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:40px;align-items:center}
+.founder-photo{
+  width:100%;max-width:350px;aspect-ratio:1;border-radius:25px;
+  object-fit:cover;border:2px solid #a78bfa;box-shadow:0 0 50px #754cff33
+}
+.founder-placeholder{
+  width:100%;max-width:350px;aspect-ratio:1;border-radius:25px;
+  display:grid;place-items:center;font-size:85px;
+  background:var(--gradient);border:2px solid #a78bfa
+}
+.badges{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+.badge-item{padding:10px 13px;background:#ffffff0b;border:1px solid var(--border);border-radius:12px;font-size:12px}
+.badge-item i{color:#f5c45b;margin-right:5px}
+footer{background:#060918;border-top:1px solid var(--border);padding:45px 0 20px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px}
+.footer-grid p,.footer-grid a{color:var(--muted);font-size:13px}
+.footer-grid a{display:block;margin:8px 0}
+.footer-grid a:hover{color:#bca8ff}
+.copyright{text-align:center;color:#78809e;border-top:1px solid var(--border);margin-top:30px;padding-top:20px;font-size:12px}
+.toast{
+  position:fixed;bottom:25px;right:25px;background:#252d50;color:white;
+  padding:13px 18px;border-radius:12px;opacity:0;transform:translateY(15px);
+  transition:.3s;z-index:2000;pointer-events:none
+}
+.toast.show{opacity:1;transform:translateY(0)}
+.hidden{display:none!important}
+@media(max-width:900px){
+ .nav-links{gap:12px}
+ .nav-links a{font-size:11px}
+ .hero-grid{gap:20px}
+ .subject-grid,.material-grid,.feature-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:700px){
+ .menu-btn{display:block}
+ .nav-links{
+  display:none;position:absolute;top:76px;left:0;width:100%;
+  padding:20px;background:#0c122b;flex-direction:column;align-items:flex-start;
+  border-bottom:1px solid var(--border)
+ }
+ .nav-links.open{display:flex}
+ .nav-links a{font-size:14px}
+ .hero{padding-top:125px;min-height:auto}
+ .hero-grid,.about-grid,.founder-grid{grid-template-columns:1fr}
+ .hero-art{min-height:300px}
+ .orbit{width:250px;height:250px}
+ .orbit-inner{width:180px;height:180px;font-size:65px}
+ .stats{grid-template-columns:repeat(2,1fr)}
+ .subject-grid,.material-grid,.feature-grid,.tool-grid{grid-template-columns:1fr}
+ .section{padding:65px 0}
+ .footer-grid{grid-template-columns:1fr}
+ .founder-photo,.founder-placeholder{max-width:260px;margin:auto}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+ <div class="container navbar">
+  <a class="logo" href="#home"><i class="fa-solid fa-graduation-cap"></i><span class="gradient-text">Studyzone</span></a>
+  <button class="menu-btn" id="menuBtn" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+  <nav class="nav-links" id="navLinks">
+   <a href="#home">Home</a>
+   <a href="#about">About</a>
+   <a href="#subjects">Subjects</a>
+   <a href="#materials">Materials</a>
+   <a href="#quiz">Daily Quiz</a>
+   <a href="#planner">Planner</a>
+   <a href="#notes">Notes</a>
+   <a href="#founder">Founder</a>
+   <a href="#contact">Contact</a>
+  </nav>
+ </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+ <div class="container">
+  <div class="hero-grid">
+   <div>
+    <span class="tag"><i class="fa-solid fa-sparkles"></i> YOUR SMART LEARNING PARTNER</span>
+    <h1>Learn Better.<br><span class="gradient-text">Dream Bigger.</span></h1>
+    <p class="hero-copy">Welcome to Studyzone — your personal learning space. Explore subjects, practice daily quizzes, organize your study routine and achieve your goals.</p>
+    <div class="hero-buttons">
+     <a href="#subjects" class="btn"><i class="fa-solid fa-book-open"></i> Explore Subjects</a>
+     <a href="#quiz" class="btn btn-outline">Take a Quiz <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+   </div>
+   <div class="hero-art">
+    <div class="orbit"><div class="orbit-inner"><i class="fa-solid fa-graduation-cap"></i></div></div>
+    <div class="float-card float-one"><i class="fa-solid fa-star" style="color:#ffd166"></i> Keep Learning!</div>
+    <div class="float-card float-two"><i class="fa-solid fa-book" style="color:#a78bfa"></i> Learn Something New</div>
+   </div>
+  </div>
+  <div class="stats">
+   <div class="stat"><h3>06+</h3><p>Learning Subjects</p></div>
+   <div class="stat"><h3>25 min</h3><p>Focus Sessions</p></div>
+   <div class="stat"><h3>Daily</h3><p>New Challenges</p></div>
+   <div class="stat"><h3>24/7</h3><p>Learn Anytime</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="about">
+ <div class="container about-grid">
+  <div class="about-visual"><i class="fa-solid fa-lightbulb"></i></div>
+  <div>
+   <span class="tag">ABOUT STUDYZONE</span>
+   <h2 style="font-size:35px">Make Learning <span class="gradient-text">Simple & Fun</span></h2>
+   <p class="muted" style="margin-top:15px">Studyzone is a student-friendly educational platform designed to make learning more organized, interesting and accessible.</p>
+   <ul class="about-list">
+    <li><i class="fa-solid fa-circle-check"></i> Subject-wise learning resources</li>
+    <li><i class="fa-solid fa-circle-check"></i> Daily quizzes and challenges</li>
+    <li><i class="fa-solid fa-circle-check"></i> Personal notes and study planner</li>
+    <li><i class="fa-solid fa-circle-check"></i> Focus timer and achievements</li>
+   </ul>
+   <a href="#features" class="btn" style="margin-top:15px">Discover Features</a>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="subjects">
+ <div class="container">
+  <div class="section-title">
+   <span class="tag">EXPLORE & LEARN</span>
+   <h2>Our <span class="gradient-text">Subjects</span></h2>
+   <p>Choose your subject and start learning today.</p>
+  </div>
+  <div class="search-box">
+   <i class="fa-solid fa-magnifying-glass" style="color:#a78bfa;padding-top:10px"></i>
+   <input type="text" id="searchInput" placeholder="Search subjects and study materials...">
+  </div>
+  <div class="subject-grid" id="subjectGrid">
+   <div class="card subject-card searchable" data-search="mathematics maths numbers algebra geometry">
+    <div class="subject-icon"><i class="fa-solid fa-calculator"></i></div>
+    <h3>Mathematics</h3><p>Explore numbers, algebra, geometry and logical problem solving.</p>
+    <button class="btn" onclick="showSubject('Mathematics')">Explore Subject</button>
+   </div>
+   <div class="card subject-card searchable" data-search="science physics chemistry biology">
+    <div class="subject-icon"><i class="fa-solid fa-flask"></i></div>
+    <h3>Science</h3><p>Discover physics, chemistry, biology and the world around us.</p>
+    <button class="btn" onclick="showSubject('Science')">Explore Subject</button>
+   </div>
+   <div class="card subject-card searchable" data-search="english grammar vocabulary writing">
+    <div class="subject-icon"><i class="fa-solid fa-language"></i></div>
+    <h3>English</h3><p>Improve grammar, vocabulary, writing and communication.</p>
+    <button class="btn" onclick="showSubject('English')">Explore Subject</button>
+   </div>
+   <div class="card subject-card searchable" data-search="computer programming technology">
+    <div class="subject-icon"><i class="fa-solid fa-laptop-code"></i></div>
+    <h3>Computer</h3><p>Learn computer basics, technology and programming concepts.</p>
+    <button class="btn" onclick="showSubject('Computer')">Explore Subject</button>
+   </div>
+   <div class="card subject-card searchable" data-search="social science history geography civics">
+    <div class="subject-icon"><i class="fa-solid fa-earth-asia"></i></div>
+    <h3>Social Science</h3><p>Understand history, geography, civics and society.</p>
+    <button class="btn" onclick="showSubject('Social Science')">Explore Subject</button>
+   </div>
+   <div class="card subject-card searchable" data-search="general knowledge gk facts">
+    <div class="subject-icon"><i class="fa-solid fa-brain"></i></div>
+    <h3>General Knowledge</h3><p>Expand your knowledge with interesting facts and discoveries.</p>
+    <button class="btn" onclick="showSubject('General Knowledge')">Explore Subject</button>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="materials" style="background:#ffffff04">
+ <div class="container">
+  <div class="section-title">
+   <span class="tag">LEARNING RESOURCES</span>
+   <h2>Study <span class="gradient-text">Materials</span></h2>
+   <p>Quick revision notes and useful learning topics.</p>
+  </div>
+  <div class="material-grid" id="materialGrid">
+   <div class="card material-card searchable" data-search="mathematics maths algebra">
+    <div class="subject-icon"><i class="fa-solid fa-square-root-variable"></i></div>
+    <div><h3>Mathematics Basics</h3><p>Numbers, fractions, algebra and geometry revision.</p>
+    <button class="btn" onclick="openLesson('Mathematics','Mathematics is the study of numbers, quantities, shapes and patterns. Important topics include arithmetic, fractions, algebra and geometry.')">Read Notes</button></div>
+   </div>
+   <div class="card material-card searchable" data-search="science physics force energy">
+    <div class="subject-icon"><i class="fa-solid fa-atom"></i></div>
+    <div><h3>Science Basics</h3><p>Explore matter, energy, force and living organisms.</p>
+    <button class="btn" onclick="openLesson('Science','Science helps us understand the natural world. Physics studies matter and energy, chemistry studies substances, and biology studies living organisms.')">Read Notes</button></div>
+   </div>
+   <div class="card material-card searchable" data-search="english grammar">
+    <div class="subject-icon"><i class="fa-solid fa-spell-check"></i></div>
+    <div><h3>English Grammar</h3><p>Learn parts of speech and sentence structure.</p>
+    <button class="btn" onclick="openLesson('English','The main parts of speech are nouns, pronouns, verbs, adjectives, adverbs, prepositions, conjunctions and interjections. A sentence expresses a complete thought.')">Read Notes</button></div>
+   </div>
+   <div class="card material-card searchable" data-search="computer hardware software">
+    <div class="subject-icon"><i class="fa-solid fa-computer"></i></div>
+    <div><h3>Computer Fundamentals</h3><p>Understand hardware, software and the internet.</p>
+    <button class="btn" onclick="openLesson('Computer','A computer is an electronic device that processes data. Hardware means physical components, while software means programs and instructions. Input, processing, output and storage are basic operations.')">Read Notes</button></div>
+   </div>
+   <div class="card material-card searchable" data-search="social science history geography">
+    <div class="subject-icon"><i class="fa-solid fa-landmark"></i></div>
+    <div><h3>Social Science</h3><p>Explore history, geography and citizenship.</p>
+    <button class="btn" onclick="openLesson('Social Science','Social science helps us understand people and society. History studies the past, geography studies places and environments, and civics studies citizenship and government.')">Read Notes</button></div>
+   </div>
+   <div class="card material-card searchable" data-search="general knowledge gk">
+    <div class="subject-icon"><i class="fa-solid fa-globe"></i></div>
+    <div><h3>General Knowledge</h3><p>Build awareness of science, nature and the world.</p>
+    <button class="btn" onclick="openLesson('General Knowledge','General knowledge includes information about geography, history, science, nature, culture and important events. Reading regularly helps build awareness.')">Read Notes</button></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="features">
+ <div class="container">
+  <div class="section-title">
+   <span class="tag">SMART LEARNING TOOLS</span>
+   <h2>Studyzone <span class="gradient-text">Features</span></h2>
+   <p>Everything you need to build a productive study routine.</p>
+  </div>
+  <div class="feature-grid">
+   <div class="card"><div class="subject-icon"><i class="fa-solid fa-stopwatch"></i></div><h3>Focus Timer</h3><p class="muted">Use a 25-minute Pomodoro study session.</p><a href="#planner" class="gradient-text">Try Timer →</a></div>
+   <div class="card"><div class="subject-icon"><i class="fa-solid fa-calendar-check"></i></div><h3>Study Planner</h3><p class="muted">Organize your tasks and plan your day.</p><a href="#planner" class="gradient-text">Make a Plan →</a></div>
+   <div class="card"><div class="subject-icon"><i class="fa-solid fa-note-sticky"></i></div><h3>Personal Notes</h3><p class="muted">Write and save your own study notes.</p><a href="#notes" class="gradient-text">Write Notes →</a></div>
+   <div class="card"><div class="subject-icon"><i class="fa-solid fa-trophy"></i></div><h3>Achievements</h3><p class="muted">Celebrate your learning milestones.</p><a href="#achievements" class="gradient-text">View Badges →</a></div>
+   <div class="card"><div class="subject-icon"><i class="fa-solid fa-bullseye"></i></div><h3>Daily Challenge</h3><p class="muted">Complete a small challenge every day.</p><a href="#challenge" class="gradient-text">Start Challenge →</a></div>
+   <div class="card"><div class="subject-icon"><i class="fa-solid fa-quote-left"></i></div><h3>Daily Motivation</h3><p class="muted">Get inspired and keep moving forward.</p><a href="#motivation" class="gradient-text">Get Inspired →</a></div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="quiz" style="background:#ffffff04">
+ <div class="container">
+  <div class="section-title">
+   <span class="tag">TEST YOUR KNOWLEDGE</span>
+   <h2>Daily <span class="gradient-text">Quiz</span></h2>
+   <p>Answer questions and check your score.</p>
+  </div>
+  <div class="card quiz-box">
+   <div class="quiz-info"><span id="questionCount">Question 1 of 5</span><span id="scoreText">Score: 0</span></div>
+   <div id="quizContent">
+    <h3 id="questionText">Loading question...</h3>
+    <div id="options"></div>
+    <p id="quizFeedback" class="muted"></p>
+    <button class="btn" id="nextQuestion" onclick="nextQuiz()" disabled>Next Question <i class="fa-solid fa-arrow-right"></i></button>
+   </div>
+   <div id="quizResult" class="quiz-result hidden"></div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="planner">
+ <div class="container">
+  <div class="section-title">
+   <span class="tag">STAY PRODUCTIVE</span>
+   <h2>Study <span class="gradient-text">Planner</span></h2>
+   <p>Focus on one task at a time and make progress.</p>
+  </div>
+  <div class="tool-grid">
+   <div class="card">
+    <h3><i class="fa-solid fa-clock gradient-text"></i> 25-Minute Focus Timer</h3>
+    <p class="muted">Work with focus. Take a short break after your session.</p>
+    <div class="timer-display" id="timerDisplay">25:00</div>
+    <div class="timer-controls">
+     <button class="btn" id="timerStart" onclick="startTimer()">Start</button>
+     <button class="btn btn-outline" onclick="pauseTimer()">Pause</button>
+     <button class="btn btn-outline" onclick="resetTimer()">Reset</button>
+    </div>
+    <p class="muted" id="timerMessage" style="text-align:center;margin-top:12px">Ready for a focused session?</p>
+   </div>
+   <div class="card">
+    <h3><i class="fa-solid fa-calendar-days gradient-text"></i> Daily Study Planner</h3>
+    <div class="form-group"><label>Study task</label><input id="taskInput" placeholder="e.g. Revise Mathematics"></div>
+    <div class="form-group"><label>Study time</label><input id="taskTime" type="time"></div>
+    <button class="btn" onclick="addTask()">Add Task</button>
+    <div id="taskList" style="margin-top:15px"></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="notes" style="background:#ffffff04">
+ <div class="container">
+  <div class="section-title">
+   <span class="tag">YOUR PERSONAL SPACE</span>
+   <h2>My <span class="gradient-text">Notes</span></h2>
+   <p>Save your ideas and important study points in this browser.</p>
+  </div>
+  <div class="card" style="max-width:750px;margin:auto">
+   <div class="form-group"><label>Note title</label><input id="noteTitle" placeholder="Enter note title"></div>
+   <div class="form-group"><label>Your note</label><textarea id="noteText" placeholder="Write your study notes here..."></textarea></div>
+   <button class="btn" onclick="saveNote()"><i class="fa-solid fa-floppy-disk"></i> Save Note</button>
+   <div id="notesList" style="margin-top:20px"></div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="challenge">
+ <div class="container">
+  <div class="card challenge">
+   <div class="big-icon"><i class="fa-solid fa-bullseye"></i></div>
+   <span class="tag">TODAY'S CHALLENGE</span>
+   <h3 id="challengeText">Study with full focus for 25 minutes.</h3>
+   <p class="muted" style="margin:12px 0 20px">Small daily actions create big achievements.</p>
+   <button class="btn" onclick="completeChallenge()" id="challengeBtn">Complete Challenge</button>
+   <p id="challengeStatus" style="margin-top:12px"></p>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="motivation">
+ <div class="container">
+  <div class="section-title">
+   <span class="tag">A LITTLE INSPIRATION</span>
+   <h2>Daily <span class="gradient-text">Motivation</span></h2>
+  </div>
+  <div class="card quote">
+   <i class="fa-solid fa-quote-left gradient-text"></i>
+   <p id="quoteText">"The secret of getting ahead is getting started."</p>
+   <small id="quoteAuthor">— Mark Twain</small>
+   <button class="btn" onclick="newQuote()" style="margin-top:22px">New Motivation <i class="fa-solid fa-rotate"></i></button>
+  </div>
+  <div class="card" style="max-width:750px;margin:25px auto 0;text-align:center">
+   <h3><i class="fa-solid fa-lightbulb gradient-text"></i> Did You Know?</h3>
+   <p id="factText" class="muted" style="margin-top:10px">Honeybees communicate the location of food through movements known as the waggle dance.</p>
+   <button class="btn btn-outline" onclick="newFact()" style="margin-top:15px">Show Another Fact</button>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="achievements" style="background:#ffffff04">
+ <div class="container">
+  <div class="section-title">
+   <span class="tag">CELEBRATE YOUR PROGRESS</span>
+   <h2>Achievement <span class="gradient-text">Badges</span></h2>
+   <p>Complete learning activities to unlock milestones.</p>
+  </div>
+  <div class="feature-grid">
+   <div class="card"><div class="subject-icon"><i class="fa-solid fa-seedling"></i></div><h3>First Step</h3><p class="muted">Welcome to Studyzone!</p><span class="gradient-text">Unlocked</span></div>
+   <div class="card"><div class="subject-icon"><i class="fa-solid fa-book-open"></i></div><h3>Note Maker</h3><p class="muted">Save your first personal note.</p><span id="noteBadge" class="muted">Locked</span></div>
+   <div class="card"><div class="subject-icon"><i class="fa-solid fa-fire"></i></div><h3>Quiz Starter</h3><p class="muted">Complete your first daily quiz.</p><span id="quizBadge" class="muted">Locked</span></div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="founder">
+ <div class="container">
+  <div class="section-title">
+   <span class="tag">MEET THE CREATOR</span>
+   <h2>Our <span class="gradient-text">Founder</span></h2>
+   <p>The person behind the Studyzone vision.</p>
+  </div>
+  <div class="founder-grid">
+   <div>
+    <!-- Replace this image URL with your own AI-generated or personal portrait -->
+    <img class="founder-photo" src="Smiling Student in StudyZone Room (1).png" alt="Founder photo">
+   </div>
+   <div>
+    <span class="tag">FOUNDER & CREATOR</span>
+    <h2 style="font-size:36px">Md Arman <span class="gradient-text">Coder</span></h2>
+    <p class="muted" style="margin-top:15px">Founder of Studyzone</p>
+    <p style="margin-top:15px;color:#c5cbe0">Welcome to Studyzone! My vision is to make learning more accessible, organized and enjoyable for students. This platform brings useful study tools and learning resources together in one place.</p>
+    <div class="badges">
+     <span class="badge-item"><i class="fa-solid fa-code"></i> Creator</span>
+     <span class="badge-item"><i class="fa-solid fa-lightbulb"></i> Learner</span>
+     <span class="badge-item"><i class="fa-solid fa-graduation-cap"></i> Education</span>
+    </div>
+    <p class="muted" style="margin-top:22px">"Dream big, learn every day, and keep improving."</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="contact" style="background:#ffffff04">
+ <div class="container">
+  <div class="section-title">
+   <span class="tag">GET IN TOUCH</span>
+   <h2>Contact <span class="gradient-text">Us</span></h2>
+   <p>Have a suggestion? We'd love to hear from you.</p>
+  </div>
+  <div class="card" style="max-width:650px;margin:auto">
+   <form id="contactForm">
+    <div class="form-group"><label>Your Name</label><input id="contactName" required placeholder="Enter your name"></div>
+    <div class="form-group"><label>Email Address</label><input id="contactEmail" type="email" required placeholder="Enter your email"></div>
+    <div class="form-group"><label>Message</label><textarea id="contactMessage" required placeholder="Write your message..."></textarea></div>
+    <button class="btn" type="submit">Send Message <i class="fa-solid fa-paper-plane"></i></button>
+   </form>
+   <p class="muted" style="font-size:12px;margin-top:12px">Demo contact form: connect an email service or backend to receive messages.</p>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="container">
+  <div class="footer-grid">
+   <div>
+    <a class="logo" href="#home"><i class="fa-solid fa-graduation-cap"></i><span class="gradient-text">Studyzone</span></a>
+    <p style="margin-top:14px;max-width:330px">Learn better, stay focused and make every study session count. Your learning journey starts here.</p>
+   </div>
+   <div><h3>Quick Links</h3><a href="#about">About Us</a><a href="#subjects">Subjects</a><a href="#quiz">Daily Quiz</a><a href="#planner">Study Planner</a></div>
+   <div><h3>Explore</h3><a href="#materials">Study Materials</a><a href="#notes">My Notes</a><a href="#founder">Founder</a><a href="#contact">Contact</a></div>
+  </div>
+  <div class="copyright">© <span id="year"></span> Studyzone | Created by Md Arman Coder. All rights reserved.</div>
+ </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const $ = id => document.getElementById(id);
+
+function toast(message){
+ const box=$("toast");
+ box.textContent=message;
+ box.classList.add("show");
+ setTimeout(()=>box.classList.remove("show"),2600);
+}
+
+// Mobile navigation
+$("menuBtn").addEventListener("click",()=>{
+ $("navLinks").classList.toggle("open");
+});
+document.querySelectorAll(".nav-links a").forEach(link=>{
+ link.addEventListener("click",()=>$("navLinks").classList.remove("open"));
+});
+
+// Search
+$("searchInput").addEventListener("input",function(){
+ const query=this.value.toLowerCase().trim();
+ document.querySelectorAll(".searchable").forEach(card=>{
+  const content=(card.innerText+" "+(card.dataset.search||"")).toLowerCase();
+  card.style.display=content.includes(query)?"":"none";
+ });
+});
+
+// Subject and study notes
+function showSubject(name){
+ const notes={
+  "Mathematics":"Start with arithmetic, fractions, algebra and geometry. Practice regularly and show each step of your solution.",
+  "Science":"Explore physics, chemistry and biology. Observe the world and ask questions about how things work.",
+  "English":"Practice reading, writing, vocabulary and grammar every day.",
+  "Computer":"Learn about hardware, software, the internet and programming fundamentals.",
+  "Social Science":"Study history, geography, civics and how societies develop.",
+  "General Knowledge":"Read about science, geography, nature, history and discoveries."
+ };
+ openLesson(name,notes[name]);
+}
+function openLesson(title,content){
+ alert(title+" Study Notes\n\n"+content);
+}
+
+// Quiz
+const questions=[
+ {q:"What is 12 × 8?",o:["84","96","108","88"],a:1},
+ {q:"Which planet is known as the Red Planet?",o:["Venus","Jupiter","Mars","Saturn"],a:2},
+ {q:"Which language is used to structure web pages?",o:["HTML","Python","C++","SQL"],a:0},
+ {q:"What is the chemical formula of water?",o:["CO2","O2","H2O","NaCl"],a:2},
+ {q:"Which is the largest ocean on Earth?",o:["Atlantic","Indian","Arctic","Pacific"],a:3}
+];
+let quizIndex=0,quizScore=0,answered=false;
+function loadQuiz(){
+ answered=false;
+ $("questionCount").textContent=`Question ${quizIndex+1} of ${questions.length}`;
+ $("scoreText").textContent="Score: "+quizScore;
+ $("questionText").textContent=questions[quizIndex].q;
+ $("options").innerHTML="";
+ $("quizFeedback").textContent="";
+ $("nextQuestion").disabled=true;
+ questions[quizIndex].o.forEach((option,index)=>{
+  const button=document.createElement("button");
+  button.className="quiz-option";
+  button.textContent=String.fromCharCode(65+index)+". "+option;
+  button.onclick=()=>answerQuiz(index,button);
+  $("options").appendChild(button);
+ });
+}
+function answerQuiz(index,button){
+ if(answered)return;
+ answered=true;
+ const correct=questions[quizIndex].a;
+ document.querySelectorAll(".quiz-option").forEach((b,i)=>{
+  if(i===correct)b.classList.add("correct");
+  else if(i===index)b.classList.add("wrong");
+  b.disabled=true;
+ });
+ if(index===correct){
+  quizScore++;
+  $("quizFeedback").textContent="Correct answer! Great job.";
+ }else{
+  $("quizFeedback").textContent="Not quite. Keep practicing!";
+ }
+ $("scoreText").textContent="Score: "+quizScore;
+ $("nextQuestion").disabled=false;
+}
+function nextQuiz(){
+ if(!answered)return;
+ quizIndex++;
+ if(quizIndex<questions.length){loadQuiz();return;}
+ $("quizContent").classList.add("hidden");
+ $("quizResult").classList.remove("hidden");
+ $("quizResult").innerHTML=`<div style="font-size:50px">🏆</div><h2>Your Score: ${quizScore}/${questions.length}</h2><p class="muted">Thanks for completing the quiz!</p><button class="btn" onclick="restartQuiz()" style="margin-top:20px">Try Again</button>`;
+ localStorage.setItem("studyzoneQuizDone","yes");
+ $("quizBadge").textContent="Unlocked";
+}
+function restartQuiz(){
+ quizIndex=0;quizScore=0;
+ $("quizContent").classList.remove("hidden");
+ $("quizResult").classList.add("hidden");
+ loadQuiz();
+}
+loadQuiz();
+
+// Focus timer
+let timerSeconds=25*60,timerInterval=null;
+function updateTimer(){
+ const m=String(Math.floor(timerSeconds/60)).padStart(2,"0");
+ const s=String(timerSeconds%60).padStart(2,"0");
+ $("timerDisplay").textContent=m+":"+s;
+}
+function startTimer(){
+ if(timerInterval)return;
+ $("timerMessage").textContent="Focus time! You can do it.";
+ timerInterval=setInterval(()=>{
+  if(timerSeconds>0){timerSeconds--;updateTimer();}
+  else{
+   clearInterval(timerInterval);timerInterval=null;
+   $("timerMessage").textContent="Session complete! Time for a short break.";
+   toast("Congratulations! Focus session completed.");
+  }
+ },1000);
+ $("timerStart").textContent="Running";
+}
+function pauseTimer(){
+ clearInterval(timerInterval);timerInterval=null;
+ $("timerMessage").textContent="Timer paused.";
+ $("timerStart").textContent="Resume";
+}
+function resetTimer(){
+ clearInterval(timerInterval);timerInterval=null;
+ timerSeconds=25*60;updateTimer();
+ $("timerMessage").textContent="Ready for a focused session?";
+ $("timerStart").textContent="Start";
+}
+updateTimer();
+
+// Planner tasks
+let tasks=JSON.parse(localStorage.getItem("studyzoneTasks")||"[]");
+function renderTasks(){
+ $("taskList").innerHTML="";
+ tasks.forEach((task,index)=>{
+  const row=document.createElement("div");
+  row.className="note-item";
+  const label=document.createElement("span");
+  label.textContent=(task.time?task.time+" — ":"")+task.name;
+  const remove=document.createElement("button");
+  remove.innerHTML='<i class="fa-solid fa-trash"></i>';
+  remove.onclick=()=>{tasks.splice(index,1);saveTasks();};
+  row.append(label,remove);
+  $("taskList").appendChild(row);
+ });
+}
+function saveTasks(){
+ localStorage.setItem("studyzoneTasks",JSON.stringify(tasks));
+ renderTasks();
+}
+function addTask(){
+ const name=$("taskInput").value.trim();
+ const time=$("taskTime").value;
+ if(!name){toast("Please enter a task.");return;}
+ tasks.push({name,time});
+ saveTasks();
+ $("taskInput").value="";
+ $("taskTime").value="";
+ toast("Task added to your planner!");
+}
+renderTasks();
+
+// Personal notes
+let notes=JSON.parse(localStorage.getItem("studyzoneNotes")||"[]");
+function renderNotes(){
+ $("notesList").innerHTML="";
+ notes.forEach((note,index)=>{
+  const item=document.createElement("div");
+  item.className="note-item";
+  const content=document.createElement("div");
+  const title=document.createElement("strong");
+  title.textContent=note.title;
+  const body=document.createElement("p");
+  body.textContent=note.text;
+  body.className="muted";
+  body.style.whiteSpace="pre-wrap";
+  content.append(title,body);
+  const remove=document.createElement("button");
+  remove.innerHTML='<i class="fa-solid fa-trash"></i>';
+  remove.setAttribute("aria-label","Delete note");
+  remove.onclick=()=>{notes.splice(index,1);saveNotes();};
+  item.append(content,remove);
+  $("notesList").appendChild(item);
+ });
+}
+function saveNotes(){
+ localStorage.setItem("studyzoneNotes",JSON.stringify(notes));
+ renderNotes();
+}
+function saveNote(){
+ const title=$("noteTitle").value.trim();
+ const text=$("noteText").value.trim();
+ if(!title||!text){toast("Please enter a title and note.");return;}
+ notes.unshift({title,text});
+ saveNotes();
+ $("noteTitle").value="";
+ $("noteText").value="";
+ $("noteBadge").textContent="Unlocked";
+ toast("Your note has been saved!");
+}
+renderNotes();
+
+// Daily challenge
+const challenges=[
+ "Study with full focus for 25 minutes.",
+ "Revise 10 important Mathematics questions.",
+ "Learn 5 new English vocabulary words.",
+ "Read one Science topic and write a summary.",
+ "Spend 15 minutes learning a new computer concept."
+];
+const todayKey=new Date().toISOString().slice(0,10);
+$("challengeText").textContent=challenges[new Date().getDate()%challenges.length];
+if(localStorage.getItem("challengeDone")===todayKey){
+ $("challengeStatus").textContent="Challenge completed today!";
+ $("challengeBtn").textContent="Completed";
+ $("challengeBtn").disabled=true;
+}
+function completeChallenge(){
+ localStorage.setItem("challengeDone",todayKey);
+ $("challengeStatus").textContent="Amazing! You completed today's challenge.";
+ $("challengeBtn").textContent="Completed";
+ $("challengeBtn").disabled=true;
+ toast("Daily challenge completed!");
+}
+
+// Motivation and facts
+const quotes=[
+ ['"The secret of getting ahead is getting started."',"— Mark Twain"],
+ ['"Great things are done by a series of small things brought together."',"— Vincent van Gogh"],
+ ['"Learning never exhausts the mind."',"— Leonardo da Vinci"],
+ ['"Believe you can and you are halfway there."',"— Theodore Roosevelt"],
+ ['"It always seems impossible until it is done."',"— Nelson Mandela"]
+];
+const facts=[
+ "Honeybees communicate the location of food through movements known as the waggle dance.",
+ "A day on Venus is longer than its year.",
+ "Octopuses have three hearts.",
+ "The Pacific Ocean is the largest ocean on Earth.",
+ "Plants use sunlight to make food through photosynthesis."
+];
+function newQuote(){
+ const item=quotes[Math.floor(Math.random()*quotes.length)];
+ $("quoteText").textContent=item[0];
+ $("quoteAuthor").textContent=item[1];
+}
+function newFact(){
+ $("factText").textContent=facts[Math.floor(Math.random()*facts.length)];
+}
+
+// Contact form demo
+$("contactForm").addEventListener("submit",function(event){
+ event.preventDefault();
+ toast("Thanks! Connect a backend to receive this message.");
+ this.reset();
+});
+
+$("year").textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
